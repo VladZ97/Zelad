@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 while ! nc -z -v -w30 db 5432; do sleep 1
 done
 knex migrate:latest
