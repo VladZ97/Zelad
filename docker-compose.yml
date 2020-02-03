@@ -1,0 +1,19 @@
+version: "3"
+services: 
+    db:
+        build: ./database
+        volumes:
+            - "dbvol:/var/lib/postgresql/data"
+
+    backend:
+        build: ./zelda-cookbook-backend
+    
+    frontend:
+        build: ./zelda-cookbook-frontend
+        ports:
+            - "80:80"
+            - "8000:8000"
+        volumes:
+            - "./zelda-cookbook-frontend/nginx/nginx.conf:/etc/nginx/nginx.conf"
+volumes: 
+    dbvol:
